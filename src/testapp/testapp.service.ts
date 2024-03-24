@@ -17,6 +17,7 @@ export interface IRequestPackListBody {
   dtacFrom: string;
   brand: Brand;
   test?: string;
+  test2?: string;
 }
 
 enum Brand {
