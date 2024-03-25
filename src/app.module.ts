@@ -8,7 +8,13 @@ import { TestappService } from './testapp/testapp.service';
 import { HttpModule } from '@nestjs/axios';
 
 @Module({
-  imports: [ConfigModule.forRoot(), TestappModule, HttpModule],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    TestappModule,
+    HttpModule,
+  ],
   controllers: [AppController, TestappController],
   providers: [AppService, TestappService],
 })
