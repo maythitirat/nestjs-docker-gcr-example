@@ -13,27 +13,8 @@ async function bootstrap() {
     'http://127.0.0.1:3002',
     'http://10.0.2.2:3000',
   ];
-  const app = await NestFactory.create(AppModule, {
-    cors: {
-      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS', 'HEAD'],
-      origin: function (origin, callback) {
-        if (!origin) {
-          callback(null, true);
-          return;
-        }
-        if (
-          whitelist.includes(origin) || // Checks your whitelist
-          !!origin.match(/yourdomain\.com$/) // Overall check for your domain
-        ) {
-          console.log('allowed cors for:', origin);
-          callback(null, true);
-        } else {
-          console.log('blocked cors for:', origin);
-          callback(new ImATeapotException('Not allowed by CORS'), false);
-        }
-      },
-    },
-  });
+  const app = await NestFactory.create(AppModule);
+  app.enableCors();
   // app.enableCors({
   //   origin: '*',
   //   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
