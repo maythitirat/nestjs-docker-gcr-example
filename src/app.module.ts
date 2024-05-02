@@ -6,6 +6,7 @@ import { TestappModule } from './testapp/testapp.module';
 import { TestappController } from './testapp/testapp.controller';
 import { TestappService } from './testapp/testapp.service';
 import { HttpModule } from '@nestjs/axios';
+import { InterestCmpModule } from './interest_cmp/interest_cmp.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { HttpModule } from '@nestjs/axios';
     }),
     TestappModule,
     HttpModule,
+    InterestCmpModule,
   ],
   controllers: [AppController, TestappController],
   providers: [AppService, TestappService],
