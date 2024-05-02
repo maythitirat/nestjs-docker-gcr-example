@@ -1,11 +1,16 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  app.enableCors({
-    origin: ['http://localhost:3000', 'https://www.maythitirat.com'],
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    cors: true,
   });
+  // const app = await NestFactory.create(AppModule);
+
+  // app.enableCors({
+  //   origin: ['http://localhost:3000', 'https://www.maythitirat.com'],
+  // });
 
   // app.enableCors();
   // app.enableCors({
